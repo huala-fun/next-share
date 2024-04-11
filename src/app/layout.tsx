@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+
 import { Toaster } from "@/components/ui/toaster"
 import Link from "next/link";
 import Image from "next/image";
+
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -18,6 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+
       <body className={inter.className}>
         <main className="flex min-h-screen flex-col items-center px-4 pt-4 sm:p-24 sm:pt-12">
           <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
