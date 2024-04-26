@@ -4,6 +4,7 @@ import { ModeToggle } from "./dark-mode";
 
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { Button } from "../ui/button";
 
 export default function Header({ className }: { className?: string }) {
   return (
@@ -26,7 +27,11 @@ export default function Header({ className }: { className?: string }) {
         />
         <span className=" text-xl">share</span>
       </Link>
-      <ModeToggle />
+      <div className=" flex gap-2">
+        <ModeToggle />
+        <Button variant={"outline"}>Log in</Button>
+        <Button>Sign up</Button>
+      </div>
     </header>
   );
 }

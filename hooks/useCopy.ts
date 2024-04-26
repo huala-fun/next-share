@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
 import Clipboard from "clipboard";
 
 export const useCopy = (
@@ -30,4 +30,26 @@ export const useCopy = (
     };
   }, [selector, target]);
   return { copyState };
+};
+
+export const useCopyText = (
+  copyRef: MutableRefObject<Element | null>,
+  text: string
+) => {
+  useEffect(() => { 
+    console.log(copyRef);
+    let clipboard: any = null;
+    if (copyRef?.current) {
+      console.log(copyRef.current);
+      clipboard = new Clipboard(copyRef.current, {
+        text: () => text,
+      });
+      clipboard.on("success", function (e: any) {
+        console.log(e);
+        
+      });
+    }
+    console.log("组件加载成功");
+    return () => clipboard?.destroy && clipboard.destroy();
+  }, [copyRef, text]);
 };
