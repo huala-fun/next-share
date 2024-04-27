@@ -24,7 +24,11 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange>
-          {children}
+          <div className="p-4 pt-8 w-full lg:w-[960px] lg:mx-auto flex flex-col">
+            <Header />
+            <main className="flex-1">{children}</main>
+          </div>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
