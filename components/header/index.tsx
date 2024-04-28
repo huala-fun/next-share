@@ -5,8 +5,12 @@ import { ModeToggle } from "./dark-mode";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
+import { auth } from "@/auth";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { HeaderAvatar } from "./avatar";
 
-export default function Header({ className }: { className?: string }) {
+export default async function Header({ className }: { className?: string }) {
+  const session = await auth();
   return (
     <header
       className={cn(
@@ -29,12 +33,19 @@ export default function Header({ className }: { className?: string }) {
       </Link>
       <div className=" flex gap-2">
         <ModeToggle />
-        <Link href={"/sign-in"}>
-          <Button variant={"outline"}>Log in</Button>
-        </Link>
-        <Link href={"/sign-up"}>
-          <Button>Sign up</Button>
-        </Link>
+        {session ? (
+          <HeaderAvatar image={session.user?.image} name={session.user?.name} />
+        ) : (
+          <>
+            {" "}
+            <Link href={"/sign-in"}>
+              <Button variant={"outline"}>Log in</Button>
+            </Link>
+            <Link href={"/sign-up"}>
+              <Button>Sign up</Button>
+            </Link>
+          </>
+        )}
       </div>
     </header>
   );

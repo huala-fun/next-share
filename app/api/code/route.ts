@@ -7,9 +7,7 @@ export const POST = async (req: NextRequest) => {
   const json = await req.json();
   const uuid = uuidv4();
   const keyPrefix = genCodeShareKey(uuid);
-
   await redis.set(keyPrefix, JSON.stringify(json));
-
   return NextResponse.json({
     code: 200,
     message: "success",
