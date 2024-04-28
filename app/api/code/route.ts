@@ -1,9 +1,11 @@
 import { redis, genCodeShareKey } from "@/lib/redis";
 import { v4 as uuidv4 } from "uuid";
 import { NextRequest, NextResponse } from "next/server";
+import { auth } from "@/auth";
 
 export const POST = async (req: NextRequest) => {
   //   const themes = await redis.get("themes");
+  const session = await auth();
   const json = await req.json();
   const uuid = uuidv4();
   const keyPrefix = genCodeShareKey(uuid);

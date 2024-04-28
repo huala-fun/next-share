@@ -1,21 +1,17 @@
-import { signIn } from "@/auth";
+"use client"
+import { signIn } from "next-auth/react";
+import { Button } from "./ui/button";
 
 export function SignIn() {
   return (
-    <form
-      action={async (formData) => {
-        "use server";
-        await signIn("credentials", formData);
+    <Button
+      type="submit"
+      onClick={async () => {
+        await signIn("github",{
+          callbackUrl: "/",
+        });
       }}>
-      <label>
-        Email
-        <input name="email" type="email" />
-      </label>
-      <label>
-        Password
-        <input name="password" type="password" />
-      </label>
-      <button>Sign In</button>
-    </form>
+      Signin with GitHub
+    </Button>
   );
 }

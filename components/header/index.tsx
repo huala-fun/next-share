@@ -1,13 +1,10 @@
 import Image from "next/image";
 import * as React from "react";
-import { ModeToggle } from "./dark-mode";
-
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { auth } from "@/auth";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { HeaderAvatar } from "./avatar";
+import { UserNav } from "./user-nav";
 
 export default async function Header({ className }: { className?: string }) {
   const session = await auth();
@@ -32,16 +29,19 @@ export default async function Header({ className }: { className?: string }) {
         <span className=" text-xl">share</span>
       </Link>
       <div className=" flex gap-2">
-        <ModeToggle />
         {session ? (
-          <HeaderAvatar image={session.user?.image} name={session.user?.name} />
+          <UserNav
+            image={session.user?.image}
+            name={session.user?.name}
+            email={session.user?.email}
+          />
         ) : (
           <>
             {" "}
-            <Link href={"/sign-in"}>
+            <Link href={"/login"}>
               <Button variant={"outline"}>Log in</Button>
             </Link>
-            <Link href={"/sign-up"}>
+            <Link href={"/signup"}>
               <Button>Sign up</Button>
             </Link>
           </>
