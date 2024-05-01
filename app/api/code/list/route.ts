@@ -1,15 +1,26 @@
-import { prisma } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
+import { countKeys, redis } from "@/lib/redis";
 export const GET = async (req: NextRequest) => {
   const session = await auth();
-  const user = await prisma.user.findFirst();
-  return NextResponse.json({
-    code: 200,
-    message: "success",
-    data: {
-      user,
-      session,
-    },
-  });
+  if (!session) {
+    return NextResponse.json({
+      code: 403,
+      message: "unauthorized",
+      data: {},
+    });
+  }
+
+
+
+
+  // const count = await countKeys("code_*");
+
+  // return NextResponse.json({
+  //   code: 200,
+  //   message: "success",
+  //   data: {
+  //     count,
+  //   },
+  // });
 };
