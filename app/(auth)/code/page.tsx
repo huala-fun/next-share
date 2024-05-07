@@ -18,19 +18,18 @@ import {
 import hljs from "highlight.js";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useToast } from "@/components/ui/use-toast";
 import { ShareLink } from "@/components/share-link";
+import toast, { Toaster } from "react-hot-toast";
 
 const useDoShare = (publishCallBack: (url: string) => void) => {
   const [codeRaw, setCodeRaw] = useState("");
-  const { toast } = useToast();
   const [language, setLanguage] = useState("auto");
   const languages = hljs.listLanguages();
   const [shareUrl, setShareUrl] = useState("");
 
   const doShare = async () => {
     if (!codeRaw.trim().length) {
-      toast({ title: "请输入代码", variant: "destructive" });
+      toast.error("请输入代码");
       return;
     }
     const res = await fetch("/api/code", {
@@ -42,7 +41,7 @@ const useDoShare = (publishCallBack: (url: string) => void) => {
     });
     const { code, data } = await res.json();
     if (code == 200) {
-      toast({ title: "发布成功" });
+      toast.success("发布成功");
       publishCallBack(`/code/${data.uuid}`);
     }
   };
@@ -99,7 +98,7 @@ export default function Home() {
           <div>
             <Select
               defaultValue={language}
-              onValueChange={(value) => {
+              onValueChange={(value: string) => {
                 setLanguage(value);
               }}>
               <SelectTrigger className="w-[180px]">
