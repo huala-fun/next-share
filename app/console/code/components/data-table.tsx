@@ -111,7 +111,14 @@ export function DataTable<TData, TValue>({
                 <TableCell
                   colSpan={columns.length}
                   className="h-24 text-center">
-                  <ReactLoading className=" m-auto fill-primary-foreground" type={"spinningBubbles"} color="221.2 83.2% 53.3%"  />
+                  <ReactLoading
+                    className=" w-8 h-8 m-auto fill-primary"
+                    type={"spinningBubbles"}
+                    color=""
+                    height=""
+                    width=""
+                  />
+                  No results.
                 </TableCell>
               </TableRow>
             )}
