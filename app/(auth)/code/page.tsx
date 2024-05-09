@@ -19,7 +19,7 @@ import hljs from "highlight.js";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ShareLink } from "@/components/share-link";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const useDoShare = (publishCallBack: (url: string) => void) => {
   const [codeRaw, setCodeRaw] = useState("");

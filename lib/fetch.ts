@@ -5,11 +5,10 @@ const request = async (url: string, config: any) => {
   try {
     const res = await fetch(url, config);
     if (!res.ok) {
-    //   toast.success("接口请求异常");
+      toast.error("接口请求异常");
       // 服务器异常返回
       throw Error("接口请求异常");
     }
-    toast.success("接口请求异常");
     return res.json();
   } catch (error) {
     toast.success("接口请求异常");

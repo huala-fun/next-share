@@ -26,6 +26,7 @@ import {
 } from "@/components/ui/table";
 
 import { DataTablePagination } from "./data-table-pagination";
+import ReactLoading from "react-loading";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -110,7 +111,7 @@ export function DataTable<TData, TValue>({
                 <TableCell
                   colSpan={columns.length}
                   className="h-24 text-center">
-                  No results.
+                  <ReactLoading className=" m-auto fill-primary-foreground" type={"spinningBubbles"} color="221.2 83.2% 53.3%"  />
                 </TableCell>
               </TableRow>
             )}

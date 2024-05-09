@@ -44,7 +44,7 @@ const columns: ColumnDef<CodeShare>[] = [
   {
     accessorKey: "id",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Id" />
+      <DataTableColumnHeader className=" w-[5px]" column={column} title="Id" />
     ),
     cell: ({ row }) => <div className="w-[80px]">{row.getValue("id")}</div>,
     enableSorting: false,
@@ -56,7 +56,7 @@ const columns: ColumnDef<CodeShare>[] = [
       <DataTableColumnHeader column={column} title="language" />
     ),
     cell: ({ row }) => (
-      <div className="w-[80px]">{row.getValue("language")}</div>
+      <div className="w-[50px]">{row.getValue("language")}</div>
     ),
     enableSorting: false,
     enableHiding: false,
@@ -112,7 +112,7 @@ export default function CodeList() {
   };
 
   useEffect(() => {
-    initCodeList();
+    // initCodeList();
   }, []);
 
   return <DataTable data={codeList} columns={columns} />;

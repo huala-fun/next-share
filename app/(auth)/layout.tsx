@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import "@/styles/globals.css";
 import Header from "@/components/header";
-import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Come and share",

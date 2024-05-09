@@ -16,7 +16,7 @@ export default async function DashboardLayout({
 }) {
   const session = await auth();
   return (
-    <div className="flex h-screen flex-col select-none">
+    <div className="flex h-screen flex-col">
       <div className="border-b sticky top-0 ">
         <div className="flex h-16 items-center px-4">
           <div className="font-bold cursor-pointer">NextShare</div>

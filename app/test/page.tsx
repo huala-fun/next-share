@@ -1,13 +1,10 @@
 "use client";
-import toast, { Toaster } from "react-hot-toast";
-
-const notify = () => toast.success("Here is your toast.");
+import ReactLoading from "react-loading";
 
 const App = () => {
   return (
-    <div>
-      <button onClick={notify}>Make me a toast</button>
-      <Toaster />
+    <div className=" h-screen flex justify-center items-center">
+      <ReactLoading type={"spinningBubbles"} color="#00000" />
     </div>
   );
 };
