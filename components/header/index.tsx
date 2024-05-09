@@ -9,11 +9,7 @@ import { UserNav } from "./user-nav";
 export default async function Header({ className }: { className?: string }) {
   const session = await auth();
   return (
-    <nav
-      className={cn(
-        "flex-between w-full mb-16 pt-3",
-        className
-      )}>
+    <nav className={cn("flex justify-between items-center w-full mb-16 pt-3", className)}>
       <Link
         className="pointer-events-none flex place-items-center gap-2 backdrop-blur-2xl   lg:pointer-events-auto lg:p-0"
         href="/"
@@ -36,11 +32,9 @@ export default async function Header({ className }: { className?: string }) {
             email={session.user?.email}
           />
         ) : (
-          <>
-            <Link href={"/login"}>
-              <Button variant={"outline"}>Log in</Button>
-            </Link>
-          </>
+          <Link href={"/login"}>
+            <Button variant={"outline"}>Log in</Button>
+          </Link>
         )}
       </div>
     </nav>

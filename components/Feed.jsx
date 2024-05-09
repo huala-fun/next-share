@@ -7,13 +7,9 @@ import { Input } from "./ui/input";
 
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
-    <div className='mt-16 prompt_layout'>
+    <div className="mt-16 w-full grid-cols-3 gap-4 grid md:grid-cols-3 md:gap-6 xl:grid-cols-4">
       {data.map((post) => (
-        <PromptCard
-          key={post.id}
-          post={post}
-          handleTagClick={handleTagClick}
-        />
+        <PromptCard key={post.id} post={post} handleTagClick={handleTagClick} />
       ))}
     </div>
   );
@@ -63,24 +59,25 @@ const Feed = () => {
 
   const handleTagClick = (tagName) => {
     setSearchText(tagName);
-
     const searchResult = filterPrompts(tagName);
     setSearchedResults(searchResult);
   };
 
   return (
-    <section className='feed'>
-      <form className='relative w-full flex-center'>
+    <section className="mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2">
+      <form className="relative flex justify-center items-center w-[36rem]">
         <Input
-          type='text'
-          placeholder='Search for a tag or a username'
+          type="text"
+          placeholder="Search for a tag or a username"
           value={searchText}
           onChange={handleSearchChange}
           required
-          className='block h-[48px] w-full rounded-md border border-gray-200 bg-white py-2.5  pl-5 pr-12 text-sm shadow-lg font-medium focus:outline-none focus:ring-0 peer'
+          className="block rounded-md border
+           border-gray-200 bg-white py-2.5  pl-5 
+           pr-12 text-sm shadow-lg font-medium 
+           focus:outline-none focus:ring-0"
         />
       </form>
-
       {/* All Prompts */}
       {searchText ? (
         <PromptCardList

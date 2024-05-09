@@ -25,22 +25,22 @@ const Item = ({ title, description, href }: { title: string; description: string
 
 const itemList = [
   {
-    href: "/code",
+    href: "/create/code",
     title: "Code Sharing",
     description: "Share your code, support highlighting, expiration limits, and encrypted sharing.",
   },
   {
-    href: "/md",
+    href: "/create/md",
     title: "Markdown Sharing",
     description: "Share your Markdown, support highlighting, expiration limits, and encrypted sharing.",
   },
   {
-    href: "/image",
+    href: "/create/image",
     title: "Album Sharing",
     description: "Share your photo collection, expiration limits, and encrypted sharing.",
   },
   {
-    href: "/short",
+    href: "/create/short",
     title: "Short Link Sharing",
     description: "Compress long links, support expiration limits, and encrypted sharing.",
   }

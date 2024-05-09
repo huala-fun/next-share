@@ -27,10 +27,10 @@ const RootLayout = ({
           enableSystem
           disableTransitionOnChange>
           <Provider>
-            <div className="bg-wrapper">
+            <div className="bg-wrapper wrapper-light dark:before:wrapper-dark">
               <div className="gradient"></div>
             </div>
-            <main className="relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6">
+            <main className="relative z-10 flex justify-end items-center flex-col max-w-7xl mx-auto sm:px-16 px-6">
               <Header />
               {children}
             </main>

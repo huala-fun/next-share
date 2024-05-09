@@ -13,10 +13,10 @@ export const GET = async (req: NextRequest) => {
   }
   const codes = await prisma.codeShare.findMany({
     where: {
-      userId: session.user.id!,
+      creatorId: session.user.id!,
     },
     include: {
-      user: true,
+      creator: true,
     },
   });
 
@@ -28,7 +28,7 @@ export const GET = async (req: NextRequest) => {
         new Date(item.createdAt),
         "yyyy-MM-dd HH:mm:ss.SSSxxx"
       );
-      return { ...item, author: item.user.name, createdAt };
+      return { ...item, author: item.creator.name, createdAt };
     }),
   });
 };

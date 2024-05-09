@@ -1,12 +1,21 @@
+import { auth } from "@auth";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (req: NextRequest) => {
-  return NextResponse.json([
-    {
-      creator: {
-        image: "https://avatars.githubusercontent.com/u/105260564?v=4",
-      },
-      id: 1,
-    },
-  ]);
+  const session = await auth();
+
+  return NextResponse.json(
+    Array(99)
+      .fill(0)
+      .map((_, i) => {
+        return {
+          creator: {
+            ...session?.user,
+          },
+          prompt: "Hello, how are you?",
+          tag: "test",
+          id: i,
+        };
+      })
+  );
 };
