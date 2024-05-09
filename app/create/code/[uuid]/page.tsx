@@ -1,5 +1,5 @@
-import { CodeBlock } from "@/components/code-view";
-import prisma from "@/lib/prisma";
+import { CodeBlock } from "@components/code-view";
+import prisma from "@lib/prisma";
 
 /**
  * 根据 uuid 获取代码分享

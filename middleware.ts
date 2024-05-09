@@ -1,4 +1,4 @@
-import { auth as middleware } from "@/auth";
+import { auth as middleware } from "@auth";
 import { NextResponse } from "next/server";
 
 export default middleware(async (req) => {

@@ -5,8 +5,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
+} from "@components/ui/select";
+import { Textarea } from "@components/ui/textarea";
 import { useEffect, useState } from "react";
 import {
   Card,
@@ -14,11 +14,11 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@components/ui/card";
 import hljs from "highlight.js";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { ShareLink } from "@/components/share-link";
+import { Button } from "@components/ui/button";
+import { cn } from "@lib/utils";
+import { ShareLink } from "@components/share-link";
 import toast from "react-hot-toast";
 
 const useDoShare = (publishCallBack: (url: string) => void) => {

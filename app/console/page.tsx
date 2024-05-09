@@ -1,17 +1,17 @@
 import { Metadata } from "next";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CalendarDateRangePicker } from "@/app/console/components/date-range-picker";
-import { RecentSales } from "@/app/console/components/recent-sales";
-import { auth } from "@/auth";
+} from "@components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@components/ui/tabs";
+import { CalendarDateRangePicker } from "@app/console/components/date-range-picker";
+import { RecentSales } from "@app/console/components/recent-sales";
+import { auth } from "@auth";
 import { Overview } from "./components/overview";
 
 export const metadata: Metadata = {

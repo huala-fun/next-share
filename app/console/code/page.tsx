@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import { z } from "zod";
 import { taskSchema } from "./data/schema";
 import CodeList from "./components/code-list";
-import { Loading } from "@/components/loading";
+import { Loading } from "@components/loading";
 
 export const metadata: Metadata = {
   title: "Code",

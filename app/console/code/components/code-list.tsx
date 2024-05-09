@@ -1,16 +1,16 @@
 "use client";
 
-import { get } from "@/lib/fetch";
+import { get } from "@lib/fetch";
 import { useEffect, useState } from "react";
 import { DataTable } from "./data-table";
 import { Checkbox } from "@radix-ui/react-checkbox";
 import { ColumnDef } from "@tanstack/react-table";
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { type CodeShare } from "@prisma/client";
-import { Button } from "@/components/ui/button";
+import { Button } from "@components/ui/button";
 import toast from "react-hot-toast";
-import { Loading } from "@/components/loading";
-import { useLoading } from "@/hooks/useLoading";
+import { Loading } from "@components/loading";
+import { useLoading } from "@hooks/useLoading";
 import Link from "next/link";
 
 const handleDeleteCode = (row: any) => {

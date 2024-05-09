@@ -1,5 +1,5 @@
 "use client";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@components/ui/card";
 import ReactLoading from "react-loading";
 
 const Loading = ({ children }: { children: React.ReactNode }) => {

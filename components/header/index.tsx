@@ -1,17 +1,17 @@
 import Image from "next/image";
 import * as React from "react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { cn } from "@lib/utils";
 import { Button } from "../ui/button";
-import { auth } from "@/auth";
+import { auth } from "@auth";
 import { UserNav } from "./user-nav";
 
 export default async function Header({ className }: { className?: string }) {
   const session = await auth();
   return (
-    <header
+    <nav
       className={cn(
-        "z-10 max-w-5xl w-full flex items-center justify-between font-mono text-sm lg:flex mb-4",
+        "flex-between w-full mb-16 pt-3",
         className
       )}>
       <Link
@@ -37,16 +37,12 @@ export default async function Header({ className }: { className?: string }) {
           />
         ) : (
           <>
-            {" "}
             <Link href={"/login"}>
               <Button variant={"outline"}>Log in</Button>
-            </Link>
-            <Link href={"/signup"}>
-              <Button>Sign up</Button>
             </Link>
           </>
         )}
       </div>
-    </header>
+    </nav>
   );
 }

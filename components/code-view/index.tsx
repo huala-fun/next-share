@@ -1,9 +1,9 @@
 "use client";
 import hljs from "highlight.js";
-import { useCopy } from "@/hooks/useCopy";
+import { useCopy } from "@hooks/useCopy";
 import { CopyIcon } from "@radix-ui/react-icons";
-import { cn } from "@/lib/utils";
-import useSwitchExternal from "@/hooks/useExternal";
+import { cn } from "@lib/utils";
+import useSwitchExternal from "@hooks/useExternal";
 import { useTheme } from "next-themes";
 import { useEffect } from "react";
 import "highlight.js/styles/mono-blue.css";

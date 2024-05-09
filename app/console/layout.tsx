@@ -1,8 +1,8 @@
 import { Metadata } from "next";
-import { MainNav } from "@/app/console/components/main-nav";
-import { Search } from "@/app/console/components/search";
-import { UserNav } from "@/components/header/user-nav";
-import { auth } from "@/auth";
+import { MainNav } from "@app/console/components/main-nav";
+import { Search } from "@app/console/components/search";
+import { UserNav } from "@components/header/user-nav";
+import { auth } from "@auth";
 
 export const metadata: Metadata = {
   title: "Console",
