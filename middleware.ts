@@ -10,6 +10,6 @@ export default middleware(async (req) => {
 // 配置 匹配路由
 export const config = {
   matcher: [
-    "/((?!api|^/$|login|signout|signup|_next/static|_next/image|favicon.ico|$).*)",
+    "/((?!api|^/$|login|signout|signup|_next/static|code/*|_next/image|favicon.ico|$).*)",
   ],
 };

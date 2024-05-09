@@ -9,9 +9,14 @@ import { DataTableColumnHeader } from "./data-table-column-header";
 import { type CodeShare } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import toast from "react-hot-toast";
+import { Loading } from "@/components/loading";
+import { useLoading } from "@/hooks/useLoading";
+import Link from "next/link";
 
-const handleDeleteCode = () => {
+const handleDeleteCode = (row: any) => {
   console.log("handleDeleteCode");
+
+  console.log(row);
 
   toast.error("功能暂未实现");
 };
@@ -46,7 +51,11 @@ const columns: ColumnDef<CodeShare>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader className=" w-[5px]" column={column} title="Id" />
     ),
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue("id")}</div>,
+    cell: ({ row }) => (
+      <div className="w-[80px]">
+        <Link href={ `/code/${row.getValue("id")}` } target="_blank">{row.getValue("id")}</Link>
+      </div>
+    ),
     enableSorting: false,
     enableHiding: false,
   },
@@ -92,7 +101,7 @@ const columns: ColumnDef<CodeShare>[] = [
           <Button
             variant={"destructive"}
             size={"sm"}
-            onClick={() => handleDeleteCode()}>
+            onClick={() => handleDeleteCode(row)}>
             删除
           </Button>
         </>
@@ -102,18 +111,13 @@ const columns: ColumnDef<CodeShare>[] = [
 ];
 
 export default function CodeList() {
-  const [codeList, setCodeList] = useState<CodeShare[]>([]);
-  const initCodeList = async () => {
-    const { data = [] } = await get("/api/code/list");
-    setCodeList((value: any[]) => {
-      return data;
-    });
-    console.log(data);
-  };
-
+  const { loading, data, run } = useLoading(() => get("/api/code/list"));
   useEffect(() => {
-    // initCodeList();
+    run();
   }, []);
-
-  return <DataTable data={codeList} columns={columns} />;
+  return (
+    <Loading loading={loading}>
+      <DataTable data={data} columns={columns} />{" "}
+    </Loading>
+  );
 }
