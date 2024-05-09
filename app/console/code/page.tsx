@@ -6,6 +6,7 @@ import { z } from "zod";
 import { columns } from "./components/columns";
 import { DataTable } from "./components/data-table";
 import { taskSchema } from "./data/schema";
+import CodeList from "./components/code-list";
 
 export const metadata: Metadata = {
   title: "Code",
@@ -26,7 +27,8 @@ export default async function TaskPage() {
 
   return (
     <div className="hidden h-full flex-1 flex-col space-y-8 p-8 md:flex">
-      <DataTable data={tasks} columns={columns} />
+      <CodeList />
+      {/* <DataTable data={tasks} columns={columns} /> */}
     </div>
   );
 }

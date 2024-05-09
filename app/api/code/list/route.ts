@@ -1,25 +1,29 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
-import { countKeys, redis } from "@/lib/redis";
+import { prisma } from "@/lib/prisma";
 export const GET = async (req: NextRequest) => {
   const session = await auth();
-
-
-  if (!session) {
+  if (!session || !session.user) {
     return NextResponse.json({
       code: 403,
       message: "unauthorized",
       data: {},
     });
   }
-
-  const res = await redis.get("code_021f9417-4851-4f30-aaef-6196f9764b5e");
+  const codes = await prisma.codeShare.findMany({
+    where: {
+      userId: session.user.id!,
+    },
+    include: {
+      user: true,
+    },
+  });
 
   return NextResponse.json({
     code: 200,
     message: "success",
-    data: {
-      res,
-    },
+    data: codes.map((item) => {
+      return { ...item, author: item.user.name };
+    }),
   });
 };

@@ -1,42 +1,40 @@
-import { redis, genCodeShareKey } from "@/lib/redis";
-import { v4 as uuidv4 } from "uuid";
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 
 export const POST = async (req: NextRequest) => {
-  //   const themes = await redis.get("themes");
   const session = await auth();
+  if (!session) {
+    return NextResponse.json({
+      code: 403,
+      message: "unauthorized",
+      data: {},
+    });
+  }
   const json = await req.json();
-  const uuid = uuidv4();
-  const keyPrefix = genCodeShareKey(uuid);
-  await redis.set(keyPrefix, JSON.stringify(json));
-
-
-
-
-  //  prisma.codeShare
-  //   .create({
-  //     data: {
-  //       uuid,
-  //       code: json.code,
-  //       theme: json.theme,
-  //       session: {
-  //         connect: {
-  //           id: session.user.id,
-  //         },
-  //       },
-  //     },
-  //   })
-
-
-
-
+  if (session?.user) {
+    const codeShare = await prisma.codeShare.create({
+      data: {
+        code: json.code,
+        language: json.language,
+        user: {
+          connect: {
+            email: session.user.email!,
+          },
+        },
+      },
+    });
+    return NextResponse.json({
+      code: 200,
+      message: "success",
+      data: {
+        uuid: codeShare.id,
+      },
+    });
+  }
   return NextResponse.json({
-    code: 200,
+    code: 400,
     message: "success",
-    data: {
-      uuid,
-    },
+    data: {},
   });
 };
