@@ -77,7 +77,7 @@ const Feed = () => {
           value={searchText}
           onChange={handleSearchChange}
           required
-          className='block w-full rounded-md border border-gray-200 bg-white py-2.5  pl-5 pr-12 text-sm shadow-lg font-medium focus:outline-none focus:ring-0 peer'
+          className='block h-[48px] w-full rounded-md border border-gray-200 bg-white py-2.5  pl-5 pr-12 text-sm shadow-lg font-medium focus:outline-none focus:ring-0 peer'
         />
       </form>
 
