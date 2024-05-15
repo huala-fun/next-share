@@ -65,19 +65,21 @@ const Feed = () => {
 
   return (
     <section className="mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2">
-      <form className="relative flex justify-center items-center w-[36px] ">
-        <Input
-          type="text"
-          placeholder="Search for a tag or a username"
-          value={searchText}
-          onChange={handleSearchChange}
-          required
-          className="block rounded-md border
+      <div className=" ">
+        <form className="flex justify-center items-center w-[32rem]">
+          <Input
+            type="text"
+            placeholder="Search for a tag or a username"
+            value={searchText}
+            onChange={handleSearchChange}
+            required
+            className="block rounded-md border
            border-gray-200 bg-white py-2.5  pl-5 
            pr-12 text-sm shadow-lg font-medium 
            focus:outline-none focus:ring-0"
-        />
-      </form>
+          />
+        </form>
+      </div>
       {/* All Prompts */}
       {searchText ? (
         <PromptCardList

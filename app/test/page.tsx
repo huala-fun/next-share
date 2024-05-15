@@ -26,9 +26,7 @@ const Loading = ({ children }: { children: React.ReactNode }) => {
 
 const App = () => {
   return (
-    <Loading>
-      <div className=" w-[48px] h-[48px]  bg-slate-500"></div>
-    </Loading>
+    <div className=" w-[48px] h-[48px]  bg-red m-[36rem]"></div>
   );
 };
 
